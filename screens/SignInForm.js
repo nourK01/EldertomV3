@@ -49,17 +49,21 @@ const SignIn = () => {
            autoCapitalize='none'
            onChangeText={(text)=> setEmail(text)}
            style={styles.inputField}
+           placeholderTextColor="#CCCCCC"
         />
       </View>
       <View style={styles.inputContainer}>
         {/* Replace the SVG for password input as well */}
         <TextInput
+        
              value={password}
              autoCapitalize='none'
              onChangeText={(text)=> setPassword(text)}
              placeholder="Password"
              secureTextEntry
-             style={styles.inputField}
+            
+             style={{...styles.inputField}}
+             placeholderTextColor="#CCCCCC"
         />
       </View>
 
