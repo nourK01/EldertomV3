@@ -1,12 +1,41 @@
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
 import styles from '../styles-login';
-
+import { FIREBASE_AUTH } from '../firebaseConfig';
+import {signInWithEmailAndPassword, createUserWithEmailAndPassword} from 'firebase/auth';
 
 const SignIn = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const auth = FIREBASE_AUTH;
 
+  const signIn = async () => {
+    try {
+      setLoading(true);
+      const response = await signInWithEmailAndPassword(auth,email, password);
+      console.log(response);
+      alert('Access Granted!');
+    } catch (error) {
+      console.log(error);
+      alert('Sign In failed: ' + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  const signUp = async () => {
+    setLoading(true);
+    try {
+      const response = await createUserWithEmailAndPassword(auth, email, password);
+      console.log(response);
+      alert('Successfully Registered!')
+    } catch (error) {
+      console.log(error);
+      alert('Registration Failed! '+ error.message)
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <View style={styles.form_main} className="form_main">
@@ -15,28 +44,40 @@ const SignIn = () => {
       <View style={styles.inputContainer}>
         {/* You need to replace the SVG components with React Native equivalents */}
         <TextInput
-          placeholder="Username"
-          style={styles.inputField}
-          // Additional props as needed
+           value={email}
+           placeholder="Email"
+           autoCapitalize='none'
+           onChangeText={(text)=> setEmail(text)}
+           style={styles.inputField}
         />
       </View>
       <View style={styles.inputContainer}>
         {/* Replace the SVG for password input as well */}
         <TextInput
-          placeholder="Password"
-          secureTextEntry
-          style={styles.inputField}
+             value={password}
+             autoCapitalize='none'
+             onChangeText={(text)=> setPassword(text)}
+             placeholder="Password"
+             secureTextEntry
+             style={styles.inputField}
         />
       </View>
-      <TouchableOpacity onPress={handleSubmit} style={styles.button} id="button">
+
+      {loading ? <ActivityIndicator size="large" color="#0000ff"/> :<> 
+      <TouchableOpacity onPress={signIn}
+       style={styles.button} id="button"
+       title="Login">
         <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>Submit</Text>
       </TouchableOpacity>
       <View style={styles.signupContainer}>
-        <Text>Forgot Password?</Text>
-        <TouchableOpacity style={styles.signupLink}>
-          <Text style={styles.remindMe}>Remind me!</Text>
+        <Text>Don't have an account?</Text>
+        <TouchableOpacity style={styles.signupLink}
+        onPress={signUp}
+        title="Create account">
+          <Text style={styles.remindMe}>Sign Up!</Text>
         </TouchableOpacity>
       </View>
+      </>}
     </View>
   );
 };

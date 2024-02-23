@@ -1,21 +1,22 @@
-// Import the functions you need from the SDKs you need
+
 import { initializeApp } from "firebase/app";
 import {getAuth} from 'firebase/auth'
-
+import {getFirestore} from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDQSbNUNoUHf-8po8uYTjI90j5ryItm4EM",
-  authDomain: "eldertomv2.firebaseapp.com",
-  projectId: "eldertomv2",
-  storageBucket: "eldertomv2.appspot.com",
-  messagingSenderId: "193171213960",
-  appId: "1:193171213960:web:710f5c901532368015d93d"
+  apiKey: "AIzaSyCe_xQZWsGZr3oG3XK5wdWBlAvzseXqbjE",
+  authDomain: "eldertom-a7dee.firebaseapp.com",
+  projectId: "eldertom-a7dee",
+  storageBucket: "eldertom-a7dee.appspot.com",
+  messagingSenderId: "712558080049",
+  appId: "1:712558080049:web:1b7a024253ad5eccc22510"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+export const FIREBASE_APP = initializeApp(firebaseConfig);
+export const FIREBASE_AUTH= getAuth(FIREBASE_APP);
+export const FIREBASE_DB= getFirestore(FIREBASE_APP);
 
 // 971483534411-8f2bjrhh199r53odrb5j1m5lf9o2ehf2.apps.googleusercontent.com
 //971483534411-8vkthgqobqj6fdu100devj6rp3d5iqrv.apps.googleusercontent.com
