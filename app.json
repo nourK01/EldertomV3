@@ -1,0 +1,51 @@
+{
+  "expo": {
+    "name": "Eldertom",
+    "slug": "Eldertom",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nourk01.Eldertom",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": " 971483534411-8f2bjrhh199r53odrb5j1m5lf9o2ehf2.apps.googleusercontent.com"
+        }
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.nourk01.Eldertom",
+      "config": {
+        "googleSignIn": {
+          "certificateHash": "keytool -keystore path-to-debug-or-production-keystore -list -v"
+        }
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "f0b8e28f-5b59-40f6-b5ff-62a98b57e6a8"
+      }
+    },
+    "scheme": "navigation-test"
+  }
+}
