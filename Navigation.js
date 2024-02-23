@@ -87,9 +87,9 @@ function DrawerGroup() {
 }
 export default function Navigation() {
     return(
-        <NavigationContainer >
+       
           <DrawerGroup/>
-          {/* <HomeStackGroup/>   */}
-        </NavigationContainer>
+         
+       
     )
-}``
+}

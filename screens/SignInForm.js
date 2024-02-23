@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
 import styles from '../styles-login';
 import { FIREBASE_AUTH } from '../firebaseConfig';
 import {signInWithEmailAndPassword, createUserWithEmailAndPassword} from 'firebase/auth';
-
+import { useNavigation } from '@react-navigation/native'; // Add this import
+ 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
