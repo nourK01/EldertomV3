@@ -13,6 +13,9 @@ import Alert from "../../components/Alert";
 import { useNavigation } from "@react-navigation/native";
 import { useLayoutEffect } from "react";
 
+import Video, {VideoRef} from 'react-native-video';
+
+
 export default function LiveFeed(){
     const navigation = useNavigation();
 
