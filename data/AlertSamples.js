@@ -30,7 +30,7 @@ export const alerts = [
       },
       content:
         "A person is at the door. Verify their identity via the camera and respond with the secret code if they're authorized. Two minutes before the alarm activates.",
-      id: "intruder_alert_1",
+      id: "intruder_alert_2",
     },
     {
       type: "chat_notification",
@@ -41,7 +41,7 @@ export const alerts = [
           "https://example.com/john-doe-avatar.png", // Replace with John Doe's avatar URL
       },
       content: "Hey, can you describe the issue?",
-      id: "chat_notification_1",
+      id: "chat_notification_31",
     },
     {
       type: "intruder_alert",
@@ -52,7 +52,7 @@ export const alerts = [
       },
       content:
         "A person is at the door. Verify their identity via the camera and respond with the secret code if they're authorized. Two minutes before the alarm activates.",
-      id: "intruder_alert_2",
+      id: "intruder_alert_3",
     },
     {
       type: "chat_notification",

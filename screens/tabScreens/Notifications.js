@@ -30,7 +30,7 @@ export default function Feed() {
   }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#bff5ea' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#dfe3e3' }}>
       <FlatList
         data={alerts.slice(0, 30)}
         keyExtractor={(item) => {
@@ -39,11 +39,7 @@ export default function Feed() {
         renderItem={({ item }) => {
           return <Alert alert={item} />;
         }}
-        // ListHeaderComponent={() => (
-        //   <View style={styles.header}>
-        //     <Text style={styles.headerTitle}>New alerts available</Text>
-        //   </View>
-        // )}
+       
         ListHeaderComponentStyle={{ backgroundColor: "#ccc" }}
         ItemSeparatorComponent={() => <View style={styles.divider} />}
       />

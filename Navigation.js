@@ -81,7 +81,7 @@ function DrawerGroup() {
   return (
     <Drawer.Navigator screenOptions={{ headerShown: false}} >
       <Drawer.Screen name="Notifications" component={HomeStackGroup}/>
-      <Drawer.Screen name="Drawer" component={drawer }  options={{ headerShown: true}}/>
+      <Drawer.Screen name="Settings" component={drawer }  options={{ headerShown: true}}/>
          </Drawer.Navigator>
   );
 }

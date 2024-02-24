@@ -1,24 +1,14 @@
-import React, { useState } from 'react';
-import { View, Text, Modal, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, Modal, TouchableOpacity, StyleSheet } from 'react-native';
 
 const Security = ({ visible, onClose }) => {
-  const [securityCodes, setSecurityCodes] = useState(['', '', '', '', '', '']);
-
-  const handleInputChange = (index, value) => {
-    const updatedCodes = [...securityCodes];
-    updatedCodes[index] = value;
-    setSecurityCodes(updatedCodes);
+  const handleGrantAccess = () => {
+    console.log('Access Granted');
+    onClose();
   };
 
-  const handleSaveSecurityCode = () => {
-    // Combine the security codes into a single string or use as needed
-    const combinedSecurityCode = securityCodes.join('');
-    
-    // Handle saving the security code logic here
-    // You may want to send this information to your backend or perform any other action
-    console.log('Security Code:', combinedSecurityCode);
-
-    // Close the modal after handling the security code
+  const handleDenyAccess = () => {
+    console.log('Access Denied');
     onClose();
   };
 
@@ -26,23 +16,21 @@ const Security = ({ visible, onClose }) => {
     <Modal visible={visible} animationType="slide" transparent>
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
-          <Text style={styles.modalTitle}>Enter Security Code</Text>
-          <View style={styles.inputContainer}>
-            {securityCodes.map((code, index) => (
-              <TextInput
-                key={index}
-                style={styles.input}
-                placeholder="0"
-                maxLength={1}
-                pattern="[0-9]"
-                keyboardType="numeric"
-                onChangeText={(text) => handleInputChange(index, text)}
-              />
-            ))}
+          <Text style={styles.modalTitle}>Grant Access?</Text>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={[styles.button, styles.grantButton]}
+              onPress={handleGrantAccess}
+            >
+              <Text style={styles.buttonText}>Grant</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.button, styles.denyButton]}
+              onPress={handleDenyAccess}
+            >
+              <Text style={styles.buttonText}>Deny</Text>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.saveButton} onPress={handleSaveSecurityCode}>
-            <Text style={styles.saveButtonText}>Verify</Text>
-          </TouchableOpacity>
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
             <Text style={styles.closeButtonText}>Close</Text>
           </TouchableOpacity>
@@ -68,31 +56,36 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 20,
+    textAlign: 'center',
   },
-  inputContainer: {
+  buttonContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     marginBottom: 20,
   },
-  input: {
-    flex: 1,
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    textAlign: 'center',
-    fontSize: 18,
-    marginHorizontal: 4,
-  },
-  saveButton: {
-    backgroundColor: '#53dda9',
-    padding: 10,
-    borderRadius: 5,
+  button: {
+    paddingVertical: 10,
+    borderRadius: 7,
     alignItems: 'center',
-    marginBottom: 10,
+    width: '45%',
+    elevation: 5,
   },
-  saveButtonText: {
+  grantButton: {
+    backgroundColor: '#51daaf',
+    shadowColor: '#008CFF',
+  },
+  denyButton: {
+    backgroundColor: '#FF0000"',
+    shadowColor: '#FF0000',
+  },
+  buttonText: {
+    fontFamily: 'Avenir',
     color: 'white',
+    fontSize: 14,
+    fontWeight: '700',
+    textTransform: 'uppercase',
+    letterSpacing: 4,
   },
   closeButton: {
     backgroundColor: '#424952',
