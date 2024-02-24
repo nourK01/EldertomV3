@@ -14,7 +14,7 @@ const AlertContent = ({ alert, onCameraPress, onReplyPress }) => {
     <View style={styles.singleItem}>
       <View style={styles.row}>
         {isSecurityAlert ? (
-          <MaterialIcons name="security" size={24} color={theme === "dark" ? "#FF0000" : "#FF0000"} style={styles.avatar} />
+          <MaterialIcons name="security" size={24} color={theme === "dark" ? "#f94260" : "#f94260"} style={styles.avatar} />
         ) : (
           <MaterialIcons name="message" size={24} color={theme === "dark" ? "#32a6ff" : "#3d83ff"} style={styles.avatar} 
           />
@@ -26,7 +26,7 @@ const AlertContent = ({ alert, onCameraPress, onReplyPress }) => {
               numberOfLines={1}
               style={[
                 styles.header,
-                { color: isSecurityAlert ? "#FF0000" : (theme === "dark" ? "#32a6ff" : "#3d83ff") },
+                { color: isSecurityAlert ? "#f94260" : (theme === "dark" ? "#32a6ff" : "#3d83ff") },
               ]}
             >
               {isSecurityAlert ? "Security Alert" : alert.author.name}
@@ -36,7 +36,7 @@ const AlertContent = ({ alert, onCameraPress, onReplyPress }) => {
           <Text
             style={[
               styles.description,
-              { color: theme === "dark" ? "#99999d" : "#99999d" },
+              { color: theme === "dark" ? "#a4a4a9" : "#a4a4a9" },
             ]}
           >
             {alert.content}
@@ -51,11 +51,11 @@ const AlertContent = ({ alert, onCameraPress, onReplyPress }) => {
   }}
   style={styles.elemAction}
 >
-                  <EvilIcons name="camera" size={22} color={theme === "dark" ? "#99999d" : "#99999d"} />
+                  <EvilIcons name="camera" size={22} color={theme === "dark" ? "#9a9ea4" : "#9a9ea4"} />
                   <Text style={styles.actionText}>Monitor</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={onReplyPress} style={styles.elemAction}>
-                  <EvilIcons name="unlock" size={22} color={theme === "dark" ? "#99999d" : "#99999d"} />
+                  <EvilIcons name="unlock" size={22} color={theme === "dark" ? "#9a9ea4" : "#9a9ea4"} />
                   <Text style={styles.actionText}>Security Code</Text>
                 </TouchableOpacity>
               </>
@@ -70,7 +70,7 @@ const AlertContent = ({ alert, onCameraPress, onReplyPress }) => {
   <EvilIcons
     name="comment"
     size={21}
-    color={theme === "dark" ? "#99999d" : "#99999d"}
+    color={theme === "dark" ? "#83888c" : "#83888c"}
   />
   <Text style={styles.actionText}>Open Chat</Text>
 </TouchableOpacity>
@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '500',
     marginBottom: 8,
+    
   },
   alertType: {
     
@@ -101,6 +102,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Avenir',
     fontSize: 15,
     marginBottom: 10,
+    
   },
   singleItem: {
     position: 'relative',
@@ -140,7 +142,7 @@ const styles = StyleSheet.create({
   actionText: {
     fontFamily: 'Avenir',
     fontSize: 16,
-    color: '#99999d',
+    color: '#9a9ea4',
   },
   alertContentContainer: {
     flexShrink: 1,

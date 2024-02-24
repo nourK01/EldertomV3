@@ -30,7 +30,7 @@ export default function Feed() {
   }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#dfe3e3' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#6ecead' }}>
       <FlatList
         data={alerts.slice(0, 30)}
         keyExtractor={(item) => {
