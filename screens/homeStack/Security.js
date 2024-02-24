@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Modal, TouchableOpacity, StyleSheet } from 'react-native';
+import { Image, View, Text, Modal, TouchableOpacity, StyleSheet } from 'react-native';
 
 const Security = ({ visible, onClose }) => {
   const handleGrantAccess = () => {
@@ -15,25 +15,31 @@ const Security = ({ visible, onClose }) => {
   return (
     <Modal visible={visible} animationType="slide" transparent>
       <View style={styles.modalContainer}>
-        <View style={styles.modalContent}>
-          <Text style={styles.modalTitle}>Grant Access?</Text>
+        <View style={[styles.card, styles.modalContent]}>
+        <Image
+            source={require("../../assets/alert.png")}
+            style={{ width: 35, height: 35, borderRadius: 100 }}
+          />
+          <Text style={styles.cookieHeading}>Intruder Detected</Text>
+          <Text style={styles.cookieDescription}>
+           If the person detected is a trusted person, you can APPROVE their acccess, else the alarm will go off. You can also choose DENY and the alarm will go off.<Text style={styles.linkText} onPress={() => {}}>
+             
+            </Text>
+          </Text>
           <View style={styles.buttonContainer}>
             <TouchableOpacity
-              style={[styles.button, styles.grantButton]}
+              style={[styles.acceptButton, styles.button]}
               onPress={handleGrantAccess}
             >
-              <Text style={styles.buttonText}>Grant</Text>
+              <Text style={styles.buttonText}>Approve</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={[styles.button, styles.denyButton]}
+              style={[styles.declineButton, styles.button]}
               onPress={handleDenyAccess}
             >
               <Text style={styles.buttonText}>Deny</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-            <Text style={styles.closeButtonText}>Close</Text>
-          </TouchableOpacity>
         </View>
       </View>
     </Modal>
@@ -47,54 +53,74 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
-  modalContent: {
-    backgroundColor: 'white',
+  card: {
+    width: 300,
+    height: 230,
+    backgroundColor: 'rgb(255, 255, 255)',
+    borderRadius: 8,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: 20,
-    borderRadius: 10,
+    paddingTop: 30,
+    gap: 13,
+    position: 'relative',
+    overflow: 'hidden',
+    shadowColor: 'rgba(0, 0, 0, 0.062)',
+    shadowOffset: { width: 2, height: 2 },
+    shadowRadius: 20,
+    shadowOpacity: 1,
+  },
+  modalContent: {
     width: '80%',
   },
-  modalTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 20,
+  cookieHeading: {
+    fontSize: 16,
+    fontWeight: '800',
+    color: 'rgb(26, 26, 26)',
+  },
+  cookieDescription: {
     textAlign: 'center',
+    fontSize: 12,
+    fontWeight: '600',
+    color: 'rgb(99, 99, 99)',
+  },
+  linkText: {
+    color: '#3b82f6',
+    textDecorationLine: 'underline',
   },
   buttonContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: 20,
+    gap: 20,
+  },
+  acceptButton: {
+    width: 80,
+    height: 30,
+    backgroundColor: '#56d9ac',
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  declineButton: {
+    width: 80,
+    height: 30,
+    backgroundColor: '#fd4760',
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
   },
   button: {
-    paddingVertical: 10,
-    borderRadius: 7,
-    alignItems: 'center',
-    width: '45%',
     elevation: 5,
-  },
-  grantButton: {
-    backgroundColor: '#51daaf',
-    shadowColor: '#008CFF',
-  },
-  denyButton: {
-    backgroundColor: '#FF0000"',
-    shadowColor: '#FF0000',
+    shadowColor: 'rgba(0, 0, 0, 0.3)',
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 1,
+    shadowOpacity: 1,
   },
   buttonText: {
-    fontFamily: 'Avenir',
-    color: 'white',
-    fontSize: 14,
-    fontWeight: '700',
-    textTransform: 'uppercase',
-    letterSpacing: 4,
-  },
-  closeButton: {
-    backgroundColor: '#424952',
-    padding: 10,
-    borderRadius: 5,
-    alignItems: 'center',
-  },
-  closeButtonText: {
-    color: 'white',
+    color: 'rgb(241, 241, 241)',
+    fontWeight: '600',
   },
 });
 
