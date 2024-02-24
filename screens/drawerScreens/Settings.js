@@ -5,20 +5,20 @@ import { FIREBASE_AUTH } from "../../firebaseConfig";
 import { useLayoutEffect } from "react";
 
 const SettingsScreen = () => {
-  const navigation = useNavigation();
+//   const navigation = useNavigation();
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerLeft: () => (
-        <TouchableOpacity onPress={() => navigation.openDrawer()}>
-          <Image
-            source={require("../../assets/logo.png")}
-            style={{ width: 60, height: 60, borderRadius: 100, marginLeft: 20 }}
-          />
-        </TouchableOpacity>
-      ),
-    });
-  }, []);
+//   useLayoutEffect(() => {
+//     navigation.setOptions({
+//       headerLeft: () => (
+//         <TouchableOpacity onPress={() => navigation.openDrawer()}>
+//           <Image
+//             source={require("../../assets/logo.png")}
+//             style={{ width: 60, height: 60, borderRadius: 100, marginLeft: 20 }}
+//           />
+//         </TouchableOpacity>
+//       ),
+//     });
+//   }, []);
 
   return (
     <View style={styles.phoneWrapper}>

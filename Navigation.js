@@ -10,6 +10,8 @@ import { Fontisto } from '@expo/vector-icons';
 import AlertDetailsScreen from "./screens/homeStack/AlertDetailsScreen";
 import drawer from "./screens/drawerScreens/Drawer";
 import Settings from "./screens/drawerScreens/Settings";
+import { View, Text, Image, TouchableOpacity, StyleSheet, Pressable } from 'react-native';
+
 
 
 //createNativeStackNavigator
@@ -80,7 +82,9 @@ function TabGroup() {
 const Drawer = createDrawerNavigator();
 
 function DrawerGroup() {
+  
   return (
+    
     <Drawer.Navigator
   screenOptions={{ headerShown: false, 
     drawerLabelStyle: { fontSize: 16, fontWeight: 'bold' },
