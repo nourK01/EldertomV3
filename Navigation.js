@@ -9,6 +9,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import AlertDetailsScreen from "./screens/homeStack/AlertDetailsScreen";
 import drawer from "./screens/drawerScreens/Drawer";
+import Settings from "./screens/drawerScreens/Settings";
+
 
 //createNativeStackNavigator
 const HomeStack = createNativeStackNavigator();
@@ -79,10 +81,20 @@ const Drawer = createDrawerNavigator();
 
 function DrawerGroup() {
   return (
-    <Drawer.Navigator screenOptions={{ headerShown: false}} >
-      <Drawer.Screen name="Notifications" component={HomeStackGroup}/>
-      <Drawer.Screen name="Settings" component={drawer }  options={{ headerShown: true}}/>
-         </Drawer.Navigator>
+    <Drawer.Navigator
+  screenOptions={{ headerShown: false, 
+    drawerLabelStyle: { fontSize: 16, fontWeight: 'bold' },
+    drawerActiveTintColor: '#6ecead', // Color when the item is active
+    drawerInactiveTintColor: '#424952', // Color when the item is inactive
+  }}
+>
+  <Drawer.Screen name="Home" component={HomeStackGroup} />
+  <Drawer.Screen name="Drawer" component={drawer} />
+  <Drawer.Screen   screenOptions={{ headerShown: true,
+  }} name="Settings" component={Settings}
+   />
+
+</Drawer.Navigator>
   );
 }
 export default function Navigation() {
