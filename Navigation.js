@@ -4,12 +4,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Notifications from "./screens/tabScreens/Notifications";
 import LiveFeed from "./screens/tabScreens/LiveFeed";
-import ChatSupport from "./screens/tabScreens/ChatSupport";
+import Intruder from "./screens/tabScreens/Intruder";
 import { Ionicons } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import AlertDetailsScreen from "./screens/homeStack/AlertDetailsScreen";
 import drawer from "./screens/drawerScreens/Drawer";
 import Settings from "./screens/drawerScreens/Settings";
+import { MaterialCommunityIcons } from '@expo/vector-icons'; // Import MaterialCommunityIcons
 import { View, Text, Image, TouchableOpacity, StyleSheet, Pressable } from 'react-native';
 
 
@@ -44,16 +45,16 @@ function TabGroup() {
           iconName = focused ? "bell-alt" : "bell";
           return <Fontisto name={iconName} size={size} color={color} />;
        
-        } else if (route.name === "Live Feed") {
+        } else if (route.name === "Elder Monitor") {
           // Handle the second tab
           iconName = focused ? "videocam" : "videocam-outline";
           return <Ionicons name={iconName} size={30} color={color} />;
         
-        } else if (route.name === "Chat Support") {
+        } else if (route.name === "Intruder Detection") {
           // Handle the third tab
-          iconName = focused ? "chatbubble-ellipses-sharp" : "chatbubble-ellipses-outline";
+          iconName = focused ? "shield-checkmark" : "shield-checkmark-outline";
           return <Ionicons name={iconName} size={size} color={color} />;
-        }
+        } 
         // Default case, return null or a default icon
         return null;
       },
@@ -68,9 +69,9 @@ function TabGroup() {
   // options={{ headerShown: false }}
 />
 
-        <Tab.Screen name="Live Feed" component={LiveFeed}
+        <Tab.Screen name="Elder Monitor"component={LiveFeed}
         />
-        <Tab.Screen name="Chat Support" component={ChatSupport}
+        <Tab.Screen name="Intruder Detection"  component={Intruder}
         />
    
     </Tab.Navigator>
@@ -93,7 +94,7 @@ function DrawerGroup() {
   }}
 >
   <Drawer.Screen name="Home" component={HomeStackGroup} />
-  <Drawer.Screen name="Drawer" component={drawer} />
+  {/* <Drawer.Screen name="Drawer" component={drawer} /> */}
   <Drawer.Screen   screenOptions={{ headerShown: true,
   }} name="Settings" component={Settings}
    />

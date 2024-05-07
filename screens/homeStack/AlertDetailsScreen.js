@@ -18,10 +18,18 @@ export default function AlertDetailsScreen() {
     setSecurityCodeModalVisible(false);
   };
 
+  const handleUserResponse = () => {
+    setSecurityCodeModalVisible(false); // Close the modal in response to user action
+  };
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <AlertContent alert={alert} onReplyPress={handleShowSecurityCodeModal} />
-      <Security visible={isSecurityCodeModalVisible} onClose={handleCloseSecurityCodeModal} />
+      <Security
+        visible={isSecurityCodeModalVisible}
+        onClose={handleCloseSecurityCodeModal}
+        onUserResponse={handleUserResponse}
+      />
     </SafeAreaView>
   );
 }

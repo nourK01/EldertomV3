@@ -1,29 +1,52 @@
 import React from 'react';
 import { Image, View, Text, Modal, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Security = ({ visible, onClose }) => {
-  const handleGrantAccess = () => {
-    console.log('Access Granted');
+const Security = ({ visible, onClose, onUserResponse }) => {
+  const handleGrantAccess = async () => {
+    try {
+      await fetch('http://192.168.0.103:3002/app/user-response', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ response: 'Allow Access' }),
+      });
+      console.log('Access Granted');
+      onUserResponse(); // Notify parent component about user response
+    } catch (error) {
+      console.error('Error granting access:', error);
+    }
     onClose();
   };
 
-  const handleDenyAccess = () => {
-    console.log('Access Denied');
+  const handleDenyAccess = async () => {
+    try {
+      await fetch('http://192.168.0.103:3002/app/user-response', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ response: 'Deny Access' }),
+      });
+      console.log('Access Denied');
+      onUserResponse(); // Notify parent component about user response
+    } catch (error) {
+      console.error('Error denying access:', error);
+    }
     onClose();
   };
-
   return (
-    <Modal visible={visible} animationType="slide" transparent>
+    <Modal visible={visible && onUserResponse !== 'Allow Access'} animationType="slide" transparent>
       <View style={styles.modalContainer}>
         <View style={[styles.card, styles.modalContent]}>
-        <Image
+          <Image
             source={require("../../assets/alert.png")}
             style={{ width: 35, height: 35, borderRadius: 100 }}
           />
           <Text style={styles.cookieHeading}>Intruder Detected</Text>
           <Text style={styles.cookieDescription}>
-           If the person detected is a trusted person, you can APPROVE their acccess, else the alarm will go off. You can also choose DENY and the alarm will go off.<Text style={styles.linkText} onPress={() => {}}>
-             
+            If the person detected is a trusted person, you can APPROVE their access, else the alarm will go off. You can also choose DENY, and the alarm will go off.
+            <Text style={styles.linkText} onPress={() => {}}>
             </Text>
           </Text>
           <View style={styles.buttonContainer}>

@@ -7,6 +7,7 @@ import { FIREBASE_AUTH } from './firebaseConfig';
 import LoginPage from './screens/SignInScreen';
 import Navigation from './Navigation';
 import { NavigationContainer } from '@react-navigation/native';
+import { MotionProvider } from './MotionContext';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ export default function App() {
     }, []);
 
     return (
+          <MotionProvider>
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Login">
                 {user ? (
@@ -30,5 +32,7 @@ export default function App() {
                 )}
             </Stack.Navigator>
         </NavigationContainer>
+        </MotionProvider>
+
     );
 }

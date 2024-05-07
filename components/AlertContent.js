@@ -1,8 +1,9 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity, useColorScheme } from "react-native";
-import { EvilIcons, MaterialIcons } from "@expo/vector-icons";
+import { EvilIcons, MaterialIcons, Entypo  } from "@expo/vector-icons";
 import { useFonts } from 'expo-font';
 import { useNavigation } from "@react-navigation/native";
+
 
 
 const AlertContent = ({ alert, onCameraPress, onReplyPress }) => {
@@ -16,7 +17,7 @@ const AlertContent = ({ alert, onCameraPress, onReplyPress }) => {
         {isSecurityAlert ? (
           <MaterialIcons name="security" size={24} color={theme === "dark" ? "#f94260" : "#f94260"} style={styles.avatar} />
         ) : (
-          <MaterialIcons name="message" size={24} color={theme === "dark" ? "#32a6ff" : "#3d83ff"} style={styles.avatar} 
+          <Entypo name="emoji-sad" size={24} color={theme === "dark" ? "#32a6ff" : "#3d83ff"} style={styles.avatar} 
           />
         )}
 
@@ -46,8 +47,7 @@ const AlertContent = ({ alert, onCameraPress, onReplyPress }) => {
               <>
                <TouchableOpacity 
   onPress={() => {
-    onCameraPress; // Call onCameraPress function
-    navigation.navigate("Live Feed"); // Navigate to "Live Feed"
+    navigation.navigate("Intruder Detection"); // Navigate to "Live Feed"
   }}
   style={styles.elemAction}
 >
@@ -64,15 +64,11 @@ const AlertContent = ({ alert, onCameraPress, onReplyPress }) => {
     <TouchableOpacity 
   style={styles.elemAction} 
   onPress={() => {
-    navigation.navigate("Chat Support");
+    navigation.navigate("Elder Monitor");
   }}
 >
-  <EvilIcons
-    name="comment"
-    size={21}
-    color={theme === "dark" ? "#83888c" : "#83888c"}
-  />
-  <Text style={styles.actionText}>Open Chat</Text>
+  <EvilIcons name="camera" size={22} color={theme === "dark" ? "#9a9ea4" : "#9a9ea4"} />
+                  <Text style={styles.actionText}>Monitor</Text>
 </TouchableOpacity>
 
               </>
